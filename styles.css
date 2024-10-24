@@ -18,7 +18,6 @@ body {
   color: var(--text-color);
 }
 
-/* Header Styles */
 .header {
   background-color: var(--card-background);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -40,7 +39,6 @@ body {
   color: #4b5563;
 }
 
-/* Main Content Styles */
 .main-content {
   max-width: 1280px;
   margin: 2rem auto;
@@ -78,22 +76,7 @@ body {
   gap: 1rem;
 }
 
-/* Skill Cards */
-.skill-card {
-  display: flex;
-  align-items: center;
-  background-color: var(--card-background);
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.skill-card i {
-  margin-right: 0.5rem;
-  color: var(--primary-color);
-}
-
-/* Chatbot Styles */
+/* Chatbot styles */
 .chatbot {
   position: fixed;
   bottom: 2rem;
@@ -117,7 +100,6 @@ body {
   transform: scale(1.1);
 }
 
-/* Chat Window Styling */
 .chat-window {
   position: fixed;
   bottom: 5rem;
@@ -136,7 +118,6 @@ body {
   display: flex;
 }
 
-/* Fade-in Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -163,11 +144,6 @@ body {
   overflow-y: auto;
   padding: 1rem;
   background-color: #f9fafb;
-}
-
-.message {
-  margin-bottom: 1rem;
-  max-width: 80%;
 }
 
 .user-message {
@@ -199,7 +175,6 @@ body {
   padding: 0.75rem;
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
-  outline: none;
 }
 
 .send-button {
@@ -209,28 +184,8 @@ body {
   border-radius: 0.5rem;
   padding: 0.75rem;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 
 .send-button:hover {
   background-color: var(--secondary-color);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .chat-window {
-    width: 100%;
-    height: 100%;
-    bottom: 0;
-    right: 0;
-    border-radius: 0;
-  }
-
-  .chat-header {
-    border-radius: 0;
-  }
 }
