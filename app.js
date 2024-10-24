@@ -1,93 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sibichakaravarthi S - Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header class="header">
-        <div class="header-content">
-            <h1>SIBICHAKARAVARTHI S</h1>
-            <p>Software Developer and Learner</p>
-            <p>Register Number: 2023503027</p>
-        </div>
-    </header>
+// Resume data
+const resumeData = {
+    name: "SIBICHAKARAVARTHI S",
+    title: "Software Developer and Learner",
+    registerNumber: "2023503027",
+    contact: {
+        phone: "+91 93616 53673",
+        email: "sibichakaravarthi588@gmail.com",
+        location: "Chromepet, Chennai, 600 004"
+    },
+    about: "Dedicated software developer with a passion for learning and solving complex technical challenges.",
+    expertise: ["Python", "DBMS", "Data Structures", "C/C++", "Java", "Problem Solving"],
+    education: [
+        {
+            institution: "Madras Institute of Technology, Chromepet",
+            degree: "B.E Computer Science and Engineering",
+            period: "2023-Present",
+            registerNumber: "2023503027"
+        },
+        {
+            institution: "MGM Matric Hr Sec School, Pochampalli",
+            period: "2015-2023"
+        }
+    ],
+    achievements: [
+        "Ranked 1st at school with 98%",
+        "SPL & Parade Captain",
+        "Diploma in computer application at CSC",
+        "Member of PDA MIT"
+    ],
+    languages: ["English", "Tamil"],
+    hobbies: [
+        "Leadership quality",
+        "Listening to music",
+        "Watching tech news at free times",
+        "Watching and playing cricket and kabaddi"
+    ],
+    projects: ["Replicated an online shopping management system in C++"]
+};
 
-    <main class="main-content">
-        <section class="section">
-            <h2 class="section-title">About Me</h2>
-            <div class="card">
-                <p>
-                    Dedicated software developer with a passion for learning and solving complex technical challenges. 
-                    Proven track record of utilizing strong problem-solving skills to create efficient, innovative solutions.
-                    Excellent communicator adept at collaborating with teams and explaining technical concepts clearly.
-                </p>
-            </div>
-        </section>
+// Chat functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const chatButton = document.getElementById('chatButton');
+    const chatWindow = document.getElementById('chatWindow');
+    const closeChat = document.getElementById('closeChat');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const chatMessages = document.getElementById('chatMessages');
 
-        <section class="section">
-            <h2 class="section-title">Education</h2>
-            <div class="card">
-                <h3>Madras Institute of Technology, Chromepet</h3>
-                <p>B.E Computer Science and Engineering</p>
-                <p>Register Number: 2023503027</p>
-                <p>2023-Present</p>
-            </div>
-            <div class="card">
-                <h3>MGM Matric Hr Sec School, Pochampalli</h3>
-                <p>2015-2023</p>
-            </div>
-        </section>
+    // Ensure chatbot opens and closes correctly
+    chatButton.addEventListener('click', () => {
+        chatWindow.style.display = 'flex'; 
+        chatWindow.classList.add('active'); // Smooth open
+    });
 
-        <section class="section">
-            <h2 class="section-title">Expertise</h2>
-            <div class="grid">
-                <div class="skill-card"><i class="fas fa-code"></i> Python</div>
-                <div class="skill-card"><i class="fas fa-database"></i> DBMS</div>
-                <div class="skill-card"><i class="fas fa-project-diagram"></i> Data Structures</div>
-                <div class="skill-card"><i class="fas fa-code"></i> C/C++</div>
-                <div class="skill-card"><i class="fab fa-java"></i> Java</div>
-                <div class="skill-card"><i class="fas fa-brain"></i> Problem Solving</div>
-            </div>
-        </section>
+    closeChat.addEventListener('click', () => {
+        chatWindow.style.display = 'none'; 
+        chatWindow.classList.remove('active'); // Reset state
+    });
 
-        <section class="section">
-            <h2 class="section-title">Achievements</h2>
-            <div class="grid">
-                <div class="card"><i class="fas fa-trophy"></i> Ranked 1st at school with 98%</div>
-                <div class="card"><i class="fas fa-medal"></i> SPL & Parade Captain</div>
-                <div class="card"><i class="fas fa-certificate"></i> Diploma in Computer Application at CSC</div>
-                <div class="card"><i class="fas fa-users"></i> Member of PDA MIT</div>
-            </div>
-        </section>
-    </main>
+    // Handle chat submission
+    chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const message = chatInput.value.trim();
+        if (!message) return;
 
-    <div class="chatbot" id="chatbot">
-        <button class="chat-button" id="chatButton">
-            <i class="fas fa-comments"></i>
-        </button>
-        <div class="chat-window" id="chatWindow" style="display: none;">
-            <div class="chat-header">
-                <span>Resume Chat</span>
-                <button class="close-button" id="closeChat">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="chat-messages" id="chatMessages"></div>
-            <form class="chat-input" id="chatForm">
-                <div class="input-form">
-                    <input type="text" class="input-field" placeholder="Ask about my resume..." id="chatInput">
-                    <button type="submit" class="send-button">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+        addMessage('user', message);
+        const response = generateResponse(message);
+        setTimeout(() => addMessage('bot', response), 500); // Simulate response delay
 
-    <script src="app.js"></script>
-</body>
-</html>
+        chatInput.value = ''; 
+        chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+    });
+
+    // Add message to chat
+    function addMessage(type, content) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}-message`;
+        messageDiv.textContent = content;
+        chatMessages.appendChild(messageDiv);
+    }
+
+    // Generate chatbot response
+    function generateResponse(question) {
+        const lowerCaseQuestion = question.toLowerCase();
+        
+        if (lowerCaseQuestion.includes('register') || lowerCaseQuestion.includes('registration')) {
+            return `His college register number is ${resumeData.registerNumber}.`;
+        }
+        if (lowerCaseQuestion.includes('name')) {
+            return `His name is ${resumeData.name}.`;
+        }
+        if (lowerCaseQuestion.includes('contact')) {
+            return `You can reach him via:\nEmail: ${resumeData.contact.email}\nPhone: ${resumeData.contact.phone}\nLocation: ${resumeData.contact.location}`;
+        }
+        if (lowerCaseQuestion.includes('education')) {
+            return resumeData.education.map(edu =>
+                `${edu.institution} (${edu.period})${edu.degree ? `\nDegree: ${edu.degree}` : ''}`
+            ).join('\n\n');
+        }
+        if (lowerCaseQuestion.includes('skills') || lowerCaseQuestion.includes('expertise')) {
+            return `He is skilled in: ${resumeData.expertise.join(', ')}`;
+        }
+        if (lowerCaseQuestion.includes('achievements')) {
+            return `His achievements include:\n${resumeData.achievements.join('\n')}`;
+        }
+        return "I'm here to help you with information about Sibi's profile. What else would you like to know?";
+    }
+});
