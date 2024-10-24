@@ -3,64 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sibichakaravarthi S - Software Developer Portfolio">
+    <meta name="keywords" content="software developer, python, java, portfolio">
+    <meta property="og:title" content="Sibichakaravarthi S - Portfolio">
+    <meta property="og:description" content="Software Developer and Learner">
+    <meta property="og:type" content="website">
     <title>Sibichakaravarthi S - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <header class="header">
         <div class="header-content">
+            <div class="profile-image">
+                <img src="/api/placeholder/150/150" alt="Profile" class="avatar">
+            </div>
             <h1>SIBICHAKARAVARTHI S</h1>
-            <p>Software Developer and Learner</p>
-            <p>Register Number: 2023503027</p>
+            <p class="title">Software Developer and Learner</p>
+            <p class="register">Register Number: 2023503027</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+            </div>
         </div>
     </header>
 
+    <nav class="navigation">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#projects">Projects</a></li>
+        </ul>
+    </nav>
+
     <main class="main-content">
-        <section class="section">
+        <section id="about" class="section">
             <h2 class="section-title">About Me</h2>
-            <div class="card">
-                <p>
-                    Dedicated software developer with a passion for learning and solving complex technical challenges. 
-                    Proven track record of utilizing strong problem-solving skills to create efficient, innovative solutions.
-                    Excellent communicator adept at collaborating with teams and explaining technical concepts clearly.
-                </p>
+            <div class="card about-card">
+                <div class="about-content">
+                    <p>
+                        Dedicated software developer with a passion for learning and solving complex technical challenges. 
+                        Proven track record of utilizing strong problem-solving skills to create efficient, innovative solutions.
+                    </p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <i class="fas fa-code"></i>
+                            <span>5+ Languages</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>3+ Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>2+ Certificates</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="section">
+        <section id="education" class="section">
             <h2 class="section-title">Education</h2>
-            <div class="card">
-                <h3>Madras Institute of Technology, Chromepet</h3>
-                <p>B.E Computer Science and Engineering</p>
-                <p>Register Number: 2023503027</p>
-                <p>2023-Present</p>
-            </div>
-            <div class="card">
-                <h3>MGM Matric Hr Sec School, Pochampalli</h3>
-                <p>2015-2023</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="card">
+                        <div class="timeline-marker"></div>
+                        <h3>Madras Institute of Technology, Chromepet</h3>
+                        <p class="degree">B.E Computer Science and Engineering</p>
+                        <p class="register">Register Number: 2023503027</p>
+                        <p class="period">2023-Present</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="card">
+                        <div class="timeline-marker"></div>
+                        <h3>MGM Matric Hr Sec School, Pochampalli</h3>
+                        <p class="period">2015-2023</p>
+                        <p class="achievement">First Rank - 98%</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="section">
+        <section id="expertise" class="section">
             <h2 class="section-title">Expertise</h2>
-            <div class="grid">
-                <div class="skill-card"><i class="fas fa-code"></i> Python</div>
-                <div class="skill-card"><i class="fas fa-database"></i> DBMS</div>
-                <div class="skill-card"><i class="fas fa-project-diagram"></i> Data Structures</div>
-                <div class="skill-card"><i class="fas fa-code"></i> C/C++</div>
-                <div class="skill-card"><i class="fab fa-java"></i> Java</div>
-                <div class="skill-card"><i class="fas fa-brain"></i> Problem Solving</div>
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3>Programming Languages</h3>
+                    <div class="grid">
+                        <div class="skill-card" data-level="90">
+                            <i class="fab fa-python"></i>
+                            <div class="skill-info">
+                                <span>Python</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-level="85">
+                            <i class="fas fa-code"></i>
+                            <div class="skill-info">
+                                <span>C/C++</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-level="80">
+                            <i class="fab fa-java"></i>
+                            <div class="skill-info">
+                                <span>Java</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3>Technologies</h3>
+                    <div class="grid">
+                        <div class="skill-card" data-level="85">
+                            <i class="fas fa-database"></i>
+                            <div class="skill-info">
+                                <span>DBMS</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-level="90">
+                            <i class="fas fa-project-diagram"></i>
+                            <div class="skill-info">
+                                <span>Data Structures</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="section">
+        <section id="achievements" class="section">
             <h2 class="section-title">Achievements</h2>
-            <div class="grid">
-                <div class="card"><i class="fas fa-trophy"></i> Ranked 1st at school with 98%</div>
-                <div class="card"><i class="fas fa-medal"></i> SPL & Parade Captain</div>
-                <div class="card"><i class="fas fa-certificate"></i> Diploma in Computer Application at CSC</div>
-                <div class="card"><i class="fas fa-users"></i> Member of PDA MIT</div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Academic Excellence</h3>
+                    <p>Ranked 1st at school with 98%</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Leadership</h3>
+                    <p>SPL & Parade Captain</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certification</h3>
+                    <p>Diploma in Computer Application at CSC</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>Member of PDA MIT</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="/api/placeholder/300/200" alt="Project Screenshot">
+                    </div>
+                    <div class="project-content">
+                        <h3>Online Shopping Management System</h3>
+                        <p>A comprehensive C++ application for managing online shopping operations</p>
+                        <div class="project-tags">
+                            <span class="tag">C++</span>
+                            <span class="tag">OOP</span>
+                            <span class="tag">Data Structures</span>
+                        </div>
+                        <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <!-- Add more project cards as needed -->
             </div>
         </section>
     </main>
@@ -68,18 +216,28 @@
     <div class="chatbot" id="chatbot">
         <button class="chat-button" id="chatButton">
             <i class="fas fa-comments"></i>
+            <span class="chat-tooltip">Ask me anything!</span>
         </button>
-        <div class="chat-window" id="chatWindow" style="display: none;">
+        <div class="chat-window" id="chatWindow">
             <div class="chat-header">
-                <span>Resume Chat</span>
+                <div class="chat-title">
+                    <i class="fas fa-robot"></i>
+                    <span>Portfolio Assistant</span>
+                </div>
                 <button class="close-button" id="closeChat">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be added here dynamically -->
+            </div>
             <form class="chat-input" id="chatForm">
                 <div class="input-form">
-                    <input type="text" class="input-field" placeholder="Ask about my resume..." id="chatInput">
+                    <input type="text" 
+                           class="input-field" 
+                           placeholder="Ask about my skills, education..." 
+                           id="chatInput"
+                           autocomplete="off">
                     <button type="submit" class="send-button">
                         <i class="fas fa-paper-plane"></i>
                     </button>
@@ -87,6 +245,17 @@
             </form>
         </div>
     </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Sibichakaravarthi S. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="#privacy">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="app.js"></script>
 </body>
