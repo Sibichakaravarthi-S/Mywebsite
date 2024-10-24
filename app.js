@@ -6,7 +6,7 @@ const resumeData = {
     contact: {
         phone: "+91 93616 53673",
         email: "sibichakaravarthi588@gmail.com",
-        location: "Chromepet, Chennai, 600 004"
+        location: "Chromepet, Chennai, 600004"
     },
     about: "Dedicated software developer with a passion for learning and solving complex technical challenges.",
     expertise: ["Python", "DBMS", "Data Structures", "C/C++", "Java", "Problem Solving"],
@@ -25,21 +25,16 @@ const resumeData = {
     achievements: [
         "Ranked 1st at school with 98%",
         "SPL & Parade Captain",
-        "Diploma in computer application at CSC",
+        "Diploma in Computer Application at CSC",
         "Member of PDA MIT"
     ],
     languages: ["English", "Tamil"],
-    hobbies: [
-        "Leadership quality",
-        "Listening to music",
-        "Watching tech news at free times",
-        "Watching and playing cricket and kabaddi"
-    ],
+    hobbies: ["Leadership", "Listening to music", "Watching tech news", "Playing cricket and kabaddi"],
     projects: ["Replicated an online shopping management system in C++"]
 };
 
-// Chat functionality
-document.addEventListener('DOMContentLoaded', function() {
+// DOM Elements
+document.addEventListener('DOMContentLoaded', () => {
     const chatButton = document.getElementById('chatButton');
     const chatWindow = document.getElementById('chatWindow');
     const closeChat = document.getElementById('closeChat');
@@ -47,32 +42,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatInput = document.getElementById('chatInput');
     const chatMessages = document.getElementById('chatMessages');
 
-    // Ensure chatbot opens and closes correctly
+    // Chat toggle
     chatButton.addEventListener('click', () => {
-        chatWindow.style.display = 'flex'; 
-        chatWindow.classList.add('active'); // Smooth open
+        chatWindow.style.display = 'flex';
+        chatButton.style.display = 'none';
     });
 
     closeChat.addEventListener('click', () => {
-        chatWindow.style.display = 'none'; 
-        chatWindow.classList.remove('active'); // Reset state
+        chatWindow.style.display = 'none';
+        chatButton.style.display = 'block';
     });
 
-    // Handle chat submission
+    // Chat form submit
     chatForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const message = chatInput.value.trim();
-        if (!message) return;
-
-        addMessage('user', message);
-        const response = generateResponse(message);
-        setTimeout(() => addMessage('bot', response), 500); // Simulate response delay
-
-        chatInput.value = ''; 
-        chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+        if (message) {
+            addMessage('user', message);
+            const response = generateResponse(message);
+            addMessage('bot', response);
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
     });
 
-    // Add message to chat
+    // Add message
     function addMessage(type, content) {
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${type}-message`;
@@ -80,30 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
         chatMessages.appendChild(messageDiv);
     }
 
-    // Generate chatbot response
+    // Generate response
     function generateResponse(question) {
-        const lowerCaseQuestion = question.toLowerCase();
-        
-        if (lowerCaseQuestion.includes('register') || lowerCaseQuestion.includes('registration')) {
-            return `His college register number is ${resumeData.registerNumber}.`;
-        }
-        if (lowerCaseQuestion.includes('name')) {
-            return `His name is ${resumeData.name}.`;
-        }
-        if (lowerCaseQuestion.includes('contact')) {
-            return `You can reach him via:\nEmail: ${resumeData.contact.email}\nPhone: ${resumeData.contact.phone}\nLocation: ${resumeData.contact.location}`;
-        }
-        if (lowerCaseQuestion.includes('education')) {
-            return resumeData.education.map(edu =>
-                `${edu.institution} (${edu.period})${edu.degree ? `\nDegree: ${edu.degree}` : ''}`
-            ).join('\n\n');
-        }
-        if (lowerCaseQuestion.includes('skills') || lowerCaseQuestion.includes('expertise')) {
-            return `He is skilled in: ${resumeData.expertise.join(', ')}`;
-        }
-        if (lowerCaseQuestion.includes('achievements')) {
-            return `His achievements include:\n${resumeData.achievements.join('\n')}`;
-        }
-        return "I'm here to help you with information about Sibi's profile. What else would you like to know?";
+        question = question.toLowerCase();
+        if (question.includes('register')) return `Register Number: ${resumeData.registerNumber}`;
+        if (question.includes('name')) return `Name: ${resumeData.name}`;
+        if (question.includes('contact')) return `Phone: ${resumeData.contact.phone}, Email: ${resumeData.contact.email}`;
+        if (question.includes('education')) return resumeData.education.map(e => `${e.institution} (${e.period})`).join('\n');
+        if (question.includes('achievement')) return resumeData.achievements.join(', ');
+        return "I can answer questions about Sibi's profile. Ask away!";
     }
 });
